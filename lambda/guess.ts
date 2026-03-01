@@ -25,7 +25,7 @@ const getPostRequestInput = (
       typeof parsedBody?.guess === "number" &&
       isValidGameId(parsedBody.gameId)
     ) {
-      return { gameId: parsedBody.gameId, guess: parsedBody.guess };
+      return { gameId: Number(parsedBody.gameId), guess: parsedBody.guess };
     }
     return "Could not parse safely request body. GameId should be of type string and withing range 1-100. Guess should be of type number.";
   } catch (err) {

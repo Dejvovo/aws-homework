@@ -4,11 +4,7 @@ import { APIGatewayProxyHandler } from "aws-lambda";
 import { IDatabaseItem } from "../lib/types";
 import { getItems, storeItem } from "../lib/utils/dbUtils";
 import { error, success } from "../lib/utils/responseUtils";
-import {
-  generateNewUniqueId,
-  now,
-  generateNumberToGuess,
-} from "../lib/utils/utils";
+import { generateNewUniqueId, generateNumberToGuess } from "../lib/utils/utils";
 
 // Why not generate this array via for-loop? AWS bills per server usage and this should be lil bit faster.
 const ALL_POSSIBLE_IDS = [
@@ -42,7 +38,6 @@ export const handler: APIGatewayProxyHandler = async () => {
   try {
     await storeItem(tableName, client, {
       pk: newUniqueId,
-      sk: now(),
       numberToGuess: generateNumberToGuess(),
     } as IDatabaseItem);
 

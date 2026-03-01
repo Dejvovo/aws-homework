@@ -17,7 +17,7 @@ export const getItems = async (
 export const getItem = async (
   tableName: string,
   database: DynamoDBDocumentClient,
-  pk: number
+  pk: number,
 ): Promise<IDatabaseItem | undefined> => {
   const result = await database.send(
     new GetCommand({

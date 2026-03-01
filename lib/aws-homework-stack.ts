@@ -43,7 +43,6 @@ export class AwsHomeworkStack extends cdk.Stack {
     // Database
     const table = new dynamodb.Table(this, "Database", {
       partitionKey: { name: "pk", type: dynamodb.AttributeType.NUMBER },
-      sortKey: { name: "sk", type: dynamodb.AttributeType.STRING },
       billingMode: dynamodb.BillingMode.PAY_PER_REQUEST, // DEFAULT is PROVISIONED. But this is easier to setup.
       removalPolicy: cdk.RemovalPolicy.DESTROY, // DEFAULT is RETAIN. But for such small project i want the DB to be deleted after stack removal.
     });
